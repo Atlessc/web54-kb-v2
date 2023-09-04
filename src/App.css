@@ -1,0 +1,22 @@
+#root {
+  position: relative;
+  margin: 0 auto;
+}
+.app-container{
+  position: relative;
+  display: flex;
+}
+
+.main-content{
+  position: absolute;
+  top: 5rem;
+  left: 6rem;
+  min-width: calc(95vw - 5rem);
+  height: calc(100vh - 5rem);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
