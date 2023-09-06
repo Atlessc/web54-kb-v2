@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Auth0Provider
     domain={domain}
     clientId={clientId}
-    authorizationParams.redirect_uri: window.location.origin
+    authorizationParams.redirect_uri: "https://web54-kb-v2.vercel.app"
   >
     <Router>
       <App />
