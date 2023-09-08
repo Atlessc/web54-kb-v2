@@ -25,7 +25,6 @@ const Loading = () => {
         size={100}
         speed={1.2}
         color="#ff6f00"
-        duration={12}
       />
     </div>
   );
