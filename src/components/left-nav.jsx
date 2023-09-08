@@ -21,9 +21,9 @@ export default function LeftNav() {
       }
       <div className="buttons">
         { isAuthenticated ?
-        <LogoutButton className="nav-item" />
-        :
         <LoginButton className="nav-item" />
+        :
+        <LogoutButton className="nav-item" />
         }
       </div>
       </div>

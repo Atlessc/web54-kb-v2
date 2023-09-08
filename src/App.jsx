@@ -36,7 +36,7 @@ function App() {
             <Route path='/articles' element={<Articles />} />
             <Route path='/articles/:id' element={<Article />} />
             <Route path='/admin' element={<Admin />} />
-            <Route path='/profile/:user' element={<Profile />} />
+            <Route path='/profile/' element={<Profile />} />
             <Route path='/callback' element={<AlreadyLoggedIn />} />
             <Route path='*' element={<_404 />} />
           </Routes>
