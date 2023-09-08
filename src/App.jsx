@@ -11,9 +11,7 @@ import Article from './pages/article'
 import _404 from './pages/404'
 import Articles from './pages/articles'
 import NotLoggedIn from './pages/not-logged-in'
-import AlreadyLoggedIn from './pages/already-logged-in'
 import { useAuth0 } from '@auth0/auth0-react'
-import LoginButton from './components/buttons/login-button'
 
 function App() {
   const { isLoading, isAuthenticated } = useAuth0()

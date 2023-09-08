@@ -2,6 +2,7 @@ import "../styles/left-nav.css";
 import LoginButton from "../components/buttons/login-button";
 import LogoutButton from "../components/buttons/logout-button";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
 export default function LeftNav() {
   const { isAuthenticated } = useAuth0();
