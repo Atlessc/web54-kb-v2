@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 
 export default function LeftNav() {
-  const { isAuthenticated } = useAuth0();
+  const { isLoading, isAuthenticated } = useAuth0();
 
   return (
     <div className="left-nav-container">
@@ -16,17 +16,20 @@ export default function LeftNav() {
         <Link to='/articles'><div className="nav-item">Articles</div></Link>
         <Link to='/admin'><div className="nav-item">Admin</div></Link>
         <Link to='/profile'><div className="nav-item">Profile</div></Link>
+
       </div>
       :
       null
       }
+      </div>
       <div className="buttons">
-        { isAuthenticated ?
-        <LogoutButton className="nav-item" />
-        :
+        { !isAuthenticated &&
+          isLoading &&
         <LoginButton className="nav-item" />
         }
-      </div>
+        { isAuthenticated &&
+        <LogoutButton className="nav-item" />
+        }
       </div>
     </div>
   )
