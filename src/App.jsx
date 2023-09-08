@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './App.css'
 import LeftNav from './components/left-nav'
 import TopNav from './components/top-nav'
@@ -37,9 +36,10 @@ function App() {
       <LeftNav />
       <div className='main-content'>
         {
+          !showNotLoggedIn &&
           isLoading &&
           isAuthenticated &&
-          <div>
+          <div className="loading">
             <Loading />
           </div>
         }
