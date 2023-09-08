@@ -21,8 +21,7 @@ export default function AlreadyLoggedIn() {
 
   return (
     <div className="already-logged-in-container">
-      <h1>Already logged in</h1>
-      <p>You are already logged in.</p>
+      <h1>Logged in</h1>
       <p>Redirecting now ...</p>
       <p>{countdown}</p>
     </div>
