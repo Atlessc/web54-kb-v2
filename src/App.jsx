@@ -7,13 +7,13 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Admin from './pages/admin'
 import Profile from './pages/profile'
-import Login from './pages/login'
 import Article from './pages/article'
 import _404 from './pages/404'
 import Articles from './pages/articles'
 import NotLoggedIn from './pages/not-logged-in'
 import AlreadyLoggedIn from './pages/already-logged-in'
 import { useAuth0 } from '@auth0/auth0-react'
+import LoginButton from './components/buttons/login-button'
 
 function App() {
   const { isLoading, isAuthenticated } = useAuth0()
@@ -37,7 +37,6 @@ function App() {
             <Route path='/articles/:id' element={<Article />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/profile/' element={<Profile />} />
-            <Route path='/callback' element={<AlreadyLoggedIn />} />
             <Route path='*' element={<_404 />} />
           </Routes>
         }
@@ -45,7 +44,6 @@ function App() {
           !isAuthenticated &&
           !isLoading &&
           <Routes>
-            <Route path='/login' element={<Login />} />
             <Route path='*' element={<NotLoggedIn />} />
           </Routes>
         }
