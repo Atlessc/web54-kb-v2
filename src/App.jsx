@@ -40,7 +40,7 @@ function App() {
         }
         {
           !isAuthenticated &&
-          !isLoading &&
+          isLoading &&
           <Routes>
             <Route path='*' element={<NotLoggedIn />} />
           </Routes>
