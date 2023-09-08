@@ -17,7 +17,7 @@ import AlreadyLoggedIn from './pages/already-logged-in'
 import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
-  const isAuthenticated = useAuth0();
+  const { isLoading, isAuthenticated } = useAuth0();
   const setRole = useStore(state => state.setRole)
   /* create a useEffect with a function that grabs the role of the user which is set to app.metadata*/
 
