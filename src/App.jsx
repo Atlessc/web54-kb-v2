@@ -16,31 +16,46 @@ import AlreadyLoggedIn from './pages/already-logged-in'
 import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
-  const isAuthenticated = useStore(state => state.isAuthenticated)
-  const setIsAuthenticated = useStore(state => state.setIsAuthenticated)
-  const setRole = useStore(state => state.setRole)
-  const setTheme = useStore(state => state.setTheme)
-  const navigate = useNavigate()
+  const { isLoading, isAuthenticated } = useAuth0()
+
+  // create a useEffect that sets the role from auth0 user metadata if the user is authenticated
+  // if the user is not authenticated, set the role to 'guest'
+  // this will be used to determine if isAuthenticated is false
 
   return (
     <div className='app-container'>
       <TopNav />
       <LeftNav />
       <div className='main-content'>
-        {isAuthenticated ? <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route path='/articles' element={<Articles />} />
-          <Route path='/articles/:id' element={<Article />} />
-          <Route path='/admin' element={<Admin />} />
-          <Route path='/profile/:user' element={<Profile />} />
-          <Route path='/callback' element={<AlreadyLoggedIn />} />
-          <Route path='*' element={<_404 />} />
-        </Routes>
-        :
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='*' element={<NotLoggedIn />} />
-        </Routes>}
+        {/* protected components */}
+        {
+          isAuthenticated &&
+          !isLoading &&
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route path='/articles' element={<Articles />} />
+            <Route path='/articles/:id' element={<Article />} />
+            <Route path='/admin' element={<Admin />} />
+            <Route path='/profile/:user' element={<Profile />} />
+            <Route path='/callback' element={<AlreadyLoggedIn />} />
+            <Route path='*' element={<_404 />} />
+          </Routes>
+        }
+        {
+          !isAuthenticated &&
+          !isLoading &&
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            <Route path='*' element={<NotLoggedIn />} />
+          </Routes>
+        }
+        {
+          isAuthenticated &&
+          isLoading &&
+          <div>
+            <h2 className='loading'>Loading...</h2>
+          </div>
+        }
       </div>
     </div>
   )
