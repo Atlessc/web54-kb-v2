@@ -5,25 +5,12 @@ import { JellyTriangle } from '@uiball/loaders';
 
 const Loading = () => {
   const { isLoading } = useAuth0();
-  const [showLoading, setShowLoading] = useState(false);
-
-  useEffect(() => {
-    if (isLoading) {
-      const timeout = setTimeout(() => setShowLoading(true), 500);
-      return () => clearTimeout(timeout);
-    }
-    setShowLoading(false);
-  }, [isLoading]);
-
-  if (!showLoading) {
-    return null;
-  }
 
   return (
-    <div className="loading">
+    <div>
       <JellyTriangle
-        size={100}
-        speed={1.2}
+        size={200}
+        speed={1}
         color="#ff6f00"
       />
     </div>

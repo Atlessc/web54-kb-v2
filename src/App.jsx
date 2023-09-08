@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      const timeout = setTimeout(() => setShowNotLoggedIn(true), 5000)
+      const timeout = setTimeout(() => setShowNotLoggedIn(true), 10000)
       return () => clearTimeout(timeout)
     }
     setShowNotLoggedIn(false)
@@ -36,8 +36,7 @@ function App() {
       <LeftNav />
       <div className='main-content'>
         {
-          showNotLoggedIn &&
-          isAuthenticated &&
+          !showNotLoggedIn &&
           <div className="loading">
             <Loading />
           </div>
@@ -61,13 +60,6 @@ function App() {
           <Routes>
             <Route path='*' element={<NotLoggedIn />} />
           </Routes>
-        }
-        {
-          !showNotLoggedIn &&
-          !isAuthenticated &&
-          <div>
-            <Loading />
-          </div>
         }
       </div>
     </div>
