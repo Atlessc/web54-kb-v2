@@ -51,7 +51,6 @@ function App() {
             <Loading />
           </div>
         }
-        {/* protected components */}
         {
           isAuthenticated &&
           !isLoading &&
