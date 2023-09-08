@@ -30,7 +30,7 @@ function App() {
           isLoading &&
           isAuthenticated &&
           <div>
-            <Loading duration={12} />
+            <Loading />
           </div>
         }
         {/* protected components */}
