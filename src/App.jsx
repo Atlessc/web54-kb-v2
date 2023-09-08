@@ -14,13 +14,12 @@ import Articles from './pages/articles'
 import NotLoggedIn from './pages/not-logged-in'
 import useStore from './store'
 import AlreadyLoggedIn from './pages/already-logged-in'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
-  const isAuthenticated = useStore(state => state.isAuthenticated)
-  const setIsAuthenticated = useStore(state => state.setIsAuthenticated)
+  const isAuthenticated = useAuth0();
   const setRole = useStore(state => state.setRole)
-  const setTheme = useStore(state => state.setTheme)
-  const navigate = useNavigate()
+  /* create a useEffect with a function that grabs the role of the user which is set to app.metadata*/
 
   return (
     <div className='app-container'>
