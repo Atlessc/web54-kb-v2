@@ -7,11 +7,15 @@ import { Auth0ProviderWithNavigate } from '@auth0/auth0-react'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Auth0ProviderWithNavigate>
-      <Router>
-        <App />
-      </Router>
-    </Auth0ProviderWithNavigate>
-  </React.StrictMode>
+  <Auth0Provider
+    domain={domain}
+    clientId={clientId}
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
+    <Router>
+      <App />
+    </Router>
+  </Auth0Provider>
 )

@@ -1,26 +1,30 @@
 import "../styles/left-nav.css";
-import useStore from "../store";
-import { Link } from "react-router-dom";
+import LoginButton from "./login-button";
+import LogoutButton from "./logout-button";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function LeftNav() {
-  const { isAuthenticated, setIsAuthenticated } = useStore();
+  const { isAuthenticated } = useAuth0();
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
-  const handleLogin = () => {
-    window.location.href = "/login";
-  };
+  
   return (
     <div className="left-nav-container">
       <div className="nav-items">
+        { isAuthenticated ? 
         <Link to='/'><div className="nav-item">Home</div></Link>
         <Link to='/articles'><div className="nav-item">Articles</div></Link>
         <Link to='/admin'><div className="nav-item">Admin</div></Link>
-        <Link to='/profile/:user'><div className="nav-item">Profile</div></Link>
+        <Link to='/profile'><div className="nav-item">Profile</div></Link>
       </div>
+      :
+      null
+      }
       <div>
-        <div className="nav-item" onClick={isAuthenticated? handleLogout : handleLogin}>{isAuthenticated ? "Logout" : "Login"}</div>
+        { isAuthenticated ?
+        <LogoutButton className="nav-item">Logout</LogoutButton>
+        :
+        <LoginButton className="nav-item">Login</LoginButton>
+        }
       </div>
     </div>
   )

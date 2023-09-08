@@ -13,9 +13,14 @@ import _404 from './pages/404'
 import Articles from './pages/articles'
 import NotLoggedIn from './pages/not-logged-in'
 import AlreadyLoggedIn from './pages/already-logged-in'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const isAuthenticated = useStore(state => state.isAuthenticated)
+  const setIsAuthenticated = useStore(state => state.setIsAuthenticated)
+  const setRole = useStore(state => state.setRole)
+  const setTheme = useStore(state => state.setTheme)
+  const navigate = useNavigate()
 
   return (
     <div className='app-container'>
