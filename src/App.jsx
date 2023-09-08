@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './App.css'
 import LeftNav from './components/left-nav'
@@ -16,10 +16,20 @@ import Loading from './pages/loading'
 
 function App() {
   const { isLoading, isAuthenticated } = useAuth0()
+  const [showNotLoggedIn, setShowNotLoggedIn] = useState(false)
 
   // create a useEffect that sets the role from auth0 user metadata if the user is authenticated
   // if the user is not authenticated, set the role to 'guest'
   // this will be used to determine if isAuthenticated is false
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      const timeout = setTimeout(() => setShowNotLoggedIn(true), 2000)
+      return () => clearTimeout(timeout)
+    }
+    setShowNotLoggedIn(false)
+  }, [isLoading, isAuthenticated])
+
 
   return (
     <div className='app-container'>
@@ -47,13 +57,12 @@ function App() {
           </Routes>
         }
         {
-          !isLoading &&
+          showNotLoggedIn &&
           !isAuthenticated &&
           <Routes>
             <Route path='*' element={<NotLoggedIn />} />
           </Routes>
         }
-
         {
           isLoading &&
           !isAuthenticated &&
