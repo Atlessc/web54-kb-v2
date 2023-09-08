@@ -12,6 +12,7 @@ import _404 from './pages/404'
 import Articles from './pages/articles'
 import NotLoggedIn from './pages/not-logged-in'
 import { useAuth0 } from '@auth0/auth0-react'
+import Loading from './pages/loading'
 
 function App() {
   const { isLoading, isAuthenticated } = useAuth0()
@@ -49,14 +50,14 @@ function App() {
           isLoading &&
           isAuthenticated &&
           <div>
-            <h2 className='loading'>Loading...</h2>
+            <Loading />
           </div>
         }
         {
           isLoading &&
           !isAuthenticated &&
           <div>
-            <h2 className='loading'>Loading...</h2>
+            <Loading />
           </div>
         }
       </div>
