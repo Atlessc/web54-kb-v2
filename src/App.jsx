@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      const timeout = setTimeout(() => setShowNotLoggedIn(true), 1500)
+      const timeout = setTimeout(() => setShowNotLoggedIn(true), 5000)
       return () => clearTimeout(timeout)
     }
     setShowNotLoggedIn(false)
