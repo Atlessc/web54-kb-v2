@@ -36,8 +36,7 @@ function App() {
       <LeftNav />
       <div className='main-content'>
         {
-          !showNotLoggedIn &&
-          isLoading &&
+          showNotLoggedIn &&
           isAuthenticated &&
           <div className="loading">
             <Loading />
