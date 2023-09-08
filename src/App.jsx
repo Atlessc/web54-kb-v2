@@ -12,15 +12,10 @@ import Article from './pages/article'
 import _404 from './pages/404'
 import Articles from './pages/articles'
 import NotLoggedIn from './pages/not-logged-in'
-import useStore from './store'
 import AlreadyLoggedIn from './pages/already-logged-in'
 
 function App() {
-  const isAuthenticated = useStore(state => state.isAuthenticated)
-  const setIsAuthenticated = useStore(state => state.setIsAuthenticated)
-  const setRole = useStore(state => state.setRole)
-  const setTheme = useStore(state => state.setTheme)
-  const navigate = useNavigate()
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div className='app-container'>
@@ -33,7 +28,7 @@ function App() {
           <Route path='/articles/:id' element={<Article />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/profile/:user' element={<Profile />} />
-          <Route path='/login' element={<AlreadyLoggedIn />} />
+          <Route path='/callback' element={<AlreadyLoggedIn />} />
           <Route path='*' element={<_404 />} />
         </Routes>
         :
