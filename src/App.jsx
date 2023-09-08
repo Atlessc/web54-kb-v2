@@ -26,6 +26,13 @@ function App() {
       <TopNav />
       <LeftNav />
       <div className='main-content'>
+        {
+          isLoading &&
+          isAuthenticated &&
+          <div>
+            <Loading />
+          </div>
+        }
         {/* protected components */}
         {
           isAuthenticated &&
@@ -46,13 +53,7 @@ function App() {
             <Route path='*' element={<NotLoggedIn />} />
           </Routes>
         }
-        {
-          isLoading &&
-          isAuthenticated &&
-          <div>
-            <Loading />
-          </div>
-        }
+
         {
           isLoading &&
           !isAuthenticated &&
