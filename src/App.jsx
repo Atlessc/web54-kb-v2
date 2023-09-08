@@ -64,7 +64,7 @@ function App() {
           </Routes>
         }
         {
-          isLoading &&
+          !showNotLoggedIn &&
           !isAuthenticated &&
           <div>
             <Loading />
