@@ -39,15 +39,22 @@ function App() {
           </Routes>
         }
         {
+          !isLoading &&
           !isAuthenticated &&
-          isLoading &&
           <Routes>
             <Route path='*' element={<NotLoggedIn />} />
           </Routes>
         }
         {
-          isAuthenticated &&
           isLoading &&
+          isAuthenticated &&
+          <div>
+            <h2 className='loading'>Loading...</h2>
+          </div>
+        }
+        {
+          isLoading &&
+          !isAuthenticated &&
           <div>
             <h2 className='loading'>Loading...</h2>
           </div>
