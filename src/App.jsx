@@ -38,7 +38,15 @@ function App() {
         {
           !showNotLoggedIn &&
           isLoading &&
-          isAuthenticated | !isAuthenticated &&
+          isAuthenticated &&
+          <div className="loading">
+            <Loading />
+          </div>
+        }
+        {
+          !showNotLoggedIn &&
+          isLoading &&
+          !isAuthenticated &&
           <div className="loading">
             <Loading />
           </div>
