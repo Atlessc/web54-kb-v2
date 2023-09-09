@@ -16,7 +16,11 @@ function Article() {
       .then((text) => setMarkdown(text));
   }, [id]);
 
-  return <ReactMarkdown className='markdown'>{markdown}</ReactMarkdown>;
-}
+  return (
+    <div>
+        <h1>yes its working</h1>
+<ReactMarkdown className='markdown'>{markdown}</ReactMarkdown>;
+</div>
+)}
 
 export default Article;
