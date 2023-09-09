@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Article.css';
 
 class ErrorBoundary extends React.Component {
