@@ -1,12 +1,34 @@
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { useState, useEffect, useErrorBoundary } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Article.css';
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Sorry, something went wrong.</h1>;
+    }
+
+    return this.props.children;
+  }
+}
 
 function Article() {
   const { id } = useParams();
   const [markdown, setMarkdown] = useState('');
-  const [_, setError] = useErrorBoundary();
 
   useEffect(() => {
     const path = `/public/${id}.md`;
@@ -17,17 +39,16 @@ function Article() {
         return response.text()
       })
       .then((text) => setMarkdown(text))
-      .catch((error) => {
-        console.log(`There was an error: ${error}`);
-        setError(error);
-      });
-  }, [id, setError]);
+      .catch((error) => console.log(`There was an error: ${error}`));
+  }, [id]);
 
   return (
-    <div>
-      <h1>yes its working</h1>
-      <ReactMarkdown className='markdown'>{markdown}</ReactMarkdown>
-    </div>
+    <ErrorBoundary>
+      <div>
+        <h1>yes its working</h1>
+        <ReactMarkdown className='markdown'>{markdown}</ReactMarkdown>
+      </div>
+    </ErrorBoundary>
   );
 }
 
