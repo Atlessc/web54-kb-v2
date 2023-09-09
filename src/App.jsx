@@ -60,7 +60,7 @@ function App() {
             <Route path='/articles/:id' element={<Article />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/profile/' element={<Profile />} />
-            <Route path='*' element={<_404 />} />
+            {/* <Route path='*' element={<_404 />} /> */}
           </Routes>
         }
         {
