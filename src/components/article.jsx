@@ -31,15 +31,24 @@ function Article() {
   const [markdown, setMarkdown] = useState('');
 
   useEffect(() => {
-    const path = `/public/${id}.md`;
-    console.log(`Fetching markdown file from absolute path: ${window.location.origin}${path}`);
-    fetch(path)
-      .then((response) => {
-        if (!response.ok) { throw response }
-        return response.text()
-      })
-      .then((text) => setMarkdown(text))
-      .catch((error) => console.log(`There was an error: ${error}`));
+    const fetchMarkdown = async () => {
+      try {
+        const path = `/public/${id}.md`;
+        console.log(`Fetching markdown file from absolute path: ${window.location.origin}${path}`);
+        const response = await fetch(path);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const text = await response.text();
+        setMarkdown(text);
+      } catch (error) {
+        console.log(`There was an error: ${error}`);
+      }
+    };
+
+    fetchMarkdown();
   }, [id]);
 
   return (
