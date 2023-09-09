@@ -8,7 +8,9 @@ function Article() {
   const [markdown, setMarkdown] = useState('');
 
   useEffect(() => {
-    fetch(`/${id}.md`)
+    const path = `public/${id}.md`;
+    console.log(`Fetching markdown file from path: ${path}`);
+    fetch(path)
       .then((response) => response.text())
       .then((text) => setMarkdown(text));
   }, [id]);
