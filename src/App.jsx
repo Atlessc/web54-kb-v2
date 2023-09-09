@@ -57,7 +57,7 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/articles' element={<Articles />} />
-            <Route path='/article/:id.md' element={<Article />} />
+            <Route path='/article/:id' element={<Article />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/profile/' element={<Profile />} />
             {/* <Route path='*' element={<_404 />} /> */}
