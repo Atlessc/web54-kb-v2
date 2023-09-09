@@ -5,6 +5,7 @@ import '../styles/Article.css';
 
 function Article() {
   const { id } = useParams();
+  console.trace();
   const [markdown, setMarkdown] = useState('');
 
   useEffect(() => {
